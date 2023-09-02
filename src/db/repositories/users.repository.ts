@@ -11,4 +11,14 @@ export class UsersRepository {
   saveUser(user: User) {
     return this.usersRepository.save(user);
   }
+
+  async findUser(loginOrEmail: string) {
+    console.log(loginOrEmail);
+    return this.usersRepository
+      .createQueryBuilder('u')
+      .where(`u.login = :loginOrEmail OR u.email = :loginOrEmail`, {
+        loginOrEmail: loginOrEmail,
+      })
+      .getOne();
+  }
 }
