@@ -19,7 +19,7 @@ export class User {
   @Column({ type: 'varchar', unique: true })
   email: string;
 
-  @Column({ type: 'int', default: 20 })
+  @Column({ type: 'tinyint', default: 20 })
   coins: number;
 
   @CreateDateColumn({ name: 'createdAt', type: 'timestamp with time zone' })
