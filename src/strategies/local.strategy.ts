@@ -19,9 +19,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
     const compare = await bcrypt.compare(password, user.passwordHash);
 
-    if (compare) {
-      return user;
-    }
-    return false;
+    return compare ? user : false;
   }
 }
