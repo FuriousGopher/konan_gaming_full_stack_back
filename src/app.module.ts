@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { LoginModule } from './login/login.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
+import { ThumbnailsModule } from './thumbnails/thumbnails.module';
 import { SlotMachineModule } from './slot-machine/slot-machine.module';
 import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh.strategy';
 
@@ -17,6 +18,7 @@ import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh.strategy';
     ConfigModule.forRoot({ isGlobal: true }),
     LoginModule,
     JwtModule,
+    ThumbnailsModule,
     SlotMachineModule,
   ],
   controllers: [AppController],
