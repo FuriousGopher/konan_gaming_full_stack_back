@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ThumbnailsModule } from './thumbnails/thumbnails.module';
 import { SlotMachineModule } from './slot-machine/slot-machine.module';
 import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh.strategy';
+import { SendGamesInfoModule } from './send-games-data/send-games-info.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh.strategy';
     JwtModule,
     ThumbnailsModule,
     SlotMachineModule,
+    SendGamesInfoModule,
   ],
   controllers: [AppController],
   providers: [AppService, LocalStrategy, JwtRefreshTokenStrategy],
