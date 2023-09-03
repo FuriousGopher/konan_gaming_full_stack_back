@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { LoginModule } from './login/login.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
+import { ThumbnailsModule } from './thumbnails/thumbnails.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { JwtModule } from '@nestjs/jwt';
     ConfigModule.forRoot({ isGlobal: true }),
     LoginModule,
     JwtModule,
+    ThumbnailsModule,
   ],
   controllers: [AppController],
   providers: [AppService, LocalStrategy],
