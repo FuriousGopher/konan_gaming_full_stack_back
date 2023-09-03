@@ -15,7 +15,6 @@ export class LoginController {
     @Res({ passthrough: true }) res: Response,
   ) {
     const token = await this.loginService.createToken(userId);
-
     res.cookie('refreshToken', token);
   }
 }

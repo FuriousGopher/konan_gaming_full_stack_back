@@ -8,6 +8,8 @@ import { LoginModule } from './login/login.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { ThumbnailsModule } from './thumbnails/thumbnails.module';
+import { SlotMachineModule } from './slot-machine/slot-machine.module';
+import { JwtRefreshTokenStrategy } from './strategies/jwt-refresh.strategy';
 
 @Module({
   imports: [
@@ -17,8 +19,9 @@ import { ThumbnailsModule } from './thumbnails/thumbnails.module';
     LoginModule,
     JwtModule,
     ThumbnailsModule,
+    SlotMachineModule,
   ],
   controllers: [AppController],
-  providers: [AppService, LocalStrategy],
+  providers: [AppService, LocalStrategy, JwtRefreshTokenStrategy],
 })
 export class AppModule {}
