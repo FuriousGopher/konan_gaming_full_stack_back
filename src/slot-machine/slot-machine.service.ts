@@ -40,8 +40,7 @@ export class SlotMachineService {
       }
     } else if (
       results.Reel1 === results.Reel2 ||
-      results.Reel2 === results.Reel3 ||
-      results.Reel1 === results.Reel3
+      results.Reel2 === results.Reel3
     ) {
       switch (results.Reel1) {
         case 'cherry':
