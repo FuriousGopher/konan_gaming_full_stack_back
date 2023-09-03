@@ -10,8 +10,7 @@ export class SendGamesInfoController {
       'src/send-games-data/games-info/game-data.json',
       (err, data) => {
         if (err) throw err;
-        const gamesData = JSON.parse(data.toString());
-        res.json(gamesData);
+        res.send(JSON.parse(data.toString()));
       },
     );
   }
