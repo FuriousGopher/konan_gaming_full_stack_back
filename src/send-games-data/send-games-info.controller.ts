@@ -6,8 +6,8 @@ import { sendGameData } from './utils/send-game-data';
 export class SendGamesInfoController {
   @Get()
   async getGameData(@Res() res: Response, @Query('title') title?: string) {
-    const gameData = await sendGameData(title);
+    const fetchGameData = await sendGameData(title);
 
-    res.json(gameData);
+    res.json(fetchGameData);
   }
 }
