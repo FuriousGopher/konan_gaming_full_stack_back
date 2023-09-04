@@ -6,16 +6,8 @@ import { sendGameData } from './utils/send-game-data';
 export class SendGamesInfoController {
   @Get()
   async getGameData(@Res() res: Response, @Query('title') title?: string) {
-    const gameData = await sendGameData();
+    const gameData = await sendGameData(title);
 
-    if (title) {
-      const filteredGameData = gameData.filter((game) =>
-        game.title.toLowerCase().includes(title.toLowerCase()),
-      );
-
-      res.json(filteredGameData);
-    } else {
-      res.json(gameData);
-    }
+    res.json(gameData);
   }
 }
