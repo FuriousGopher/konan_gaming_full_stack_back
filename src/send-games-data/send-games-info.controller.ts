@@ -1,17 +1,21 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Controller, Get, Res, Query } from '@nestjs/common';
 import { Response } from 'express';
-import * as fs from 'fs';
+import { sendGameData } from './utils/send-game-data';
 
 @Controller('send')
 export class SendGamesInfoController {
   @Get()
-  async getGameData(@Res() res: Response) {
-    return fs.readFile(
-      'src/send-games-data/games-info/game-data.json',
-      (err, data) => {
-        if (err) throw err;
-        res.send(JSON.parse(data.toString()));
-      },
-    );
+  async getGameData(@Res() res: Response, @Query('title') title?: string) {
+    const gameData = await sendGameData();
+
+    if (title) {
+      const filteredGameData = gameData.filter((game) =>
+        game.title.toLowerCase().includes(title.toLowerCase()),
+      );
+
+      res.json(filteredGameData);
+    } else {
+      res.json(gameData);
+    }
   }
 }
