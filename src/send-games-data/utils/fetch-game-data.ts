@@ -1,8 +1,10 @@
 import { promises as fsPromises } from 'fs';
+import * as path from 'path';
 
 export const fetchGameData = async (searchQuery?: string) => {
   try {
-    const data = await fsPromises.readFile('dist/public/game-data.json');
+    const filePath = path.join(__dirname, '../..', 'public', 'game-data.json');
+    const data = await fsPromises.readFile(filePath);
     const parsedGamesArray = JSON.parse(data.toString());
     if (searchQuery) {
       return parsedGamesArray.filter((game) =>
