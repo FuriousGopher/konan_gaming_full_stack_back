@@ -1,6 +1,6 @@
 import { promises as fsPromises } from 'fs';
 
-export const sendGameData = async (searchQuery?: string) => {
+export const fetchGameData = async (searchQuery?: string) => {
   try {
     const data = await fsPromises.readFile(
       'src/send-games-data/games-info/game-data.json',
