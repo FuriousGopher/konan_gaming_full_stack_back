@@ -13,6 +13,8 @@ export class AuthService {
     user.passwordHash = await bcrypt.hash(createAuthDto.password, 10);
     user.email = createAuthDto.email;
 
-    return this.usersRepository.saveUser(user);
+    await this.usersRepository.saveUser(user);
+
+    return true;
   }
 }
