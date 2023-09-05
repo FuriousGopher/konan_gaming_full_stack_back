@@ -8,10 +8,10 @@ import {
 export class RegistrationDto {
   @IsString()
   @MinLength(3, {
-    message: 'Name min 3 char',
+    message: 'Name min 3 letters',
   })
   @MaxLength(10, {
-    message: 'Name max 10 char',
+    message: 'Name max 10 letters',
   })
   login: string;
 
@@ -20,10 +20,10 @@ export class RegistrationDto {
 
   @IsString()
   @MinLength(6, {
-    message: 'Password min 6 char',
+    message: 'Password min 6 letters',
   })
   @MaxLength(20, {
-    message: 'Password max 20 char',
+    message: 'Password max 20 letters',
   })
   password: string;
 }

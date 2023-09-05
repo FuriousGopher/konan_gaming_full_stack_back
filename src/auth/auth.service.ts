@@ -15,6 +15,6 @@ export class AuthService {
 
     await this.usersRepository.saveUser(user);
 
-    return `User ${user.login} was successfully registered`;
+    return true;
   }
 }
