@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { useContainer } from '@nestjs/class-validator';
-import * as cookieParser from 'cookie-parser';
 import {TrimPipe} from "./pipes/trim.pipe";
 import {ValidationPipe} from "@nestjs/common";
 import {customExceptionFactory} from "./pipes/exception.factory";
+import cookieParser from "cookie-parser";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
