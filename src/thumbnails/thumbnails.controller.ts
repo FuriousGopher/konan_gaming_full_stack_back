@@ -9,7 +9,7 @@ export class ThumbnailsController {
     const filePath = path.join(
       __dirname,
       '/../public',
-      'default-thumbnail.jpg',
+      'default-thumbnail.png',
     );
     res.sendFile(filePath);
   }
