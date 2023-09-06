@@ -42,7 +42,7 @@ export class SlotMachineService {
       results.Reel1 === results.Reel2 ||
       results.Reel2 === results.Reel3
     ) {
-      switch (results.Reel1) {
+      switch (results.Reel2) {
         case 'cherry':
           reward = 40;
           break;
@@ -62,6 +62,9 @@ export class SlotMachineService {
     return {
       yourWin: reward,
       yourId: user.id,
+      result1: results.Reel1,
+      result2: results.Reel2,
+      result3: results.Reel3,
     };
   }
 }

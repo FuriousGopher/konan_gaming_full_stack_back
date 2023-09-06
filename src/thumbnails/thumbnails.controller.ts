@@ -13,4 +13,5 @@ export class ThumbnailsController {
     );
     res.sendFile(filePath);
   }
+
 }

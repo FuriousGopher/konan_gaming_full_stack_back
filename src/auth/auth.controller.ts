@@ -11,4 +11,5 @@ export class AuthController {
   async registration(@Body() createAuthDto: RegistrationDto) {
     return this.authService.create(createAuthDto);
   }
+
 }

@@ -17,7 +17,7 @@ export class SlotMachineController {
   async spin(@UserIdFromGuard() userId: any) {
     const result = await this.slotMachineService.makeSpin(userId);
 
-    if (!result) throw new BadRequestException();
+    if (!result) return  new BadRequestException();
 
     return result;
   }
