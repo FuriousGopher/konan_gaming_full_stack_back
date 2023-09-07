@@ -6,6 +6,8 @@ export type exceptionObjectType = {
   message: string;
   field: string;
 };
+
+// Creates a custom exception object for validation errors
 export const customExceptionFactory = (errors) => {
   const errorsForResponse: exceptionObjectType[] = [];
 

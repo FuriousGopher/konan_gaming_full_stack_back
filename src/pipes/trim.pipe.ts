@@ -1,5 +1,7 @@
 import { Injectable, PipeTransform } from '@nestjs/common';
 
+
+// Custom NestJS pipe to trim whitespace from object values
 @Injectable()
 export class TrimPipe implements PipeTransform {
   transform(value: any) {

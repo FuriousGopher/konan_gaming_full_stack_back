@@ -1,6 +1,8 @@
 import { promises as fsPromises } from 'fs';
 import * as path from 'path';
 
+
+// Reads and parses game data from a JSON file, optionally filtering by search query
 export const fetchGameData = async (searchQuery?: string) => {
   try {
     const filePath = path.join(__dirname, '../..', 'public', 'game-data.json');

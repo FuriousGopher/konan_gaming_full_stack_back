@@ -5,6 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+
+// Entity representing user data in the database
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
