@@ -10,6 +10,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cookieParser());
   app.enableCors({ credentials: true, origin: 'https://konan-gaming-full-stack-front.vercel.app' });
+    console.log(process.env.SECRET_KEY)
+    console.log(process.env.FRONT_URL)
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
   app.useGlobalPipes(
       new TrimPipe(),
