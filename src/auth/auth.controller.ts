@@ -11,10 +11,11 @@ export class AuthController {
     try {
       const result = await this.authService.create(createAuthDto);
       if (!result) {
-          return new BadRequestException('Login or email is already taken');
+        throw new BadRequestException('Login or email is already takdeen');
       }
       return result;
     } catch (e) {
+      throw new BadRequestException(e.message);
     }
   }
 
