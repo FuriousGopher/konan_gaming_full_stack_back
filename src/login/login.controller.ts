@@ -1,4 +1,4 @@
-import {Controller, Post, UseGuards, Res, Get, BadRequestException} from '@nestjs/common';
+import {Controller, Post, UseGuards, Res, Get, BadRequestException, NotFoundException} from '@nestjs/common';
 import { LoginService } from './login.service';
 import { LocalAuthGuard } from '../guards/local-auth.guard';
 import { UserIdFromGuard } from '../decorators/user-id-from-guard.decorator';
@@ -15,21 +15,28 @@ export class LoginController {
     @UserIdFromGuard() userId: any,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const token = await this.loginService.createToken(userId);
-    res.cookie('refreshToken', token, {
-      sameSite: 'none',
-      secure: true
-    });
+    try {
+      const token = await this.loginService.createToken(userId);
+      res.cookie('refreshToken', token, {
+        sameSite: 'none',
+        secure: true
+      });
+    } catch (error) {
+      return new BadRequestException();
+    }
   }
 
   @UseGuards(JwtRefreshGuard)
   @Get('/me')
   async getMe(@UserIdFromGuard() userId: any) {
-    const result = await this.loginService.getUserInfo(userId)
+    try {
+      const result = await this.loginService.getUserInfo(userId);
 
-    if (!result) return new BadRequestException();
+      if (!result) return new NotFoundException();
 
-    return result;
+      return result;
+    } catch (error) {
+      return new BadRequestException();
+    }
   }
-
 }

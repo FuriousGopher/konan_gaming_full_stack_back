@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { RegistrationDto } from './dto/create-auth.dto';
-import { User } from '../db/entities/user.entity';
+import {Injectable} from '@nestjs/common';
+import {RegistrationDto} from './dto/create-auth.dto';
+import {User} from '../db/entities/user.entity';
 import * as bcrypt from 'bcryptjs';
-import { UsersRepository } from '../db/repositories/users.repository';
+import {UsersRepository} from '../db/repositories/users.repository';
 
 @Injectable()
 export class AuthService {
@@ -13,8 +13,7 @@ export class AuthService {
     user.passwordHash = await bcrypt.hash(createAuthDto.password, 10);
     user.email = createAuthDto.email;
 
-    await this.usersRepository.saveUser(user);
+    return await this.usersRepository.saveUser(user);
 
-    return true;
   }
 }
